@@ -111,7 +111,7 @@ const Main = () => {
 
       <div className="main_container">
         <div className="img_main">
-          <h3>Bank Flow</h3>
+          <h3>Crowd Vista</h3>
           <div className="images"></div>
         </div>
         <form action="" className="main_form" onSubmit={handleCheckCrowd}> 
