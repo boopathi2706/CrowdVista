@@ -65,7 +65,7 @@ const handleCheck=(event)=>{
       {login && (
         <div className="Login_container">
           <div className="Login_left_side">
-            <h3>Bank Flow</h3>
+            <h3>Crowd Vista</h3>
             <div className="img"></div>
           </div>
 
@@ -136,7 +136,7 @@ const handleCheck=(event)=>{
 
           <div className="signup_left_side">
             <form className="signup_form" action="">
-              <h1>Welcome To BankFlow!</h1>
+              <h1>Welcome To CrowdVista!</h1>
               <h3 className="demo">Signup to Continue</h3>
               <div className="input_contiainer_signup">
                 <input
@@ -195,7 +195,7 @@ const handleCheck=(event)=>{
           </div>
           
         <div className="signup_right_side">
-            <h3>Bank Flow</h3>
+            <h3>Crowd Vista</h3>
             <div className="img1"></div>
           </div>
         
