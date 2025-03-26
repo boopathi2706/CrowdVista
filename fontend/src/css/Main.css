@@ -155,6 +155,40 @@
    
     border-radius: 70%;
 }
+.message_content{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: end;
+    padding: 10px;
+    max-height: 450px;
+    overflow-y: auto;
+    
+}
+.message_content h4{
+    background-color:#151865;
+    text-align: left;
+    align-self: flex-end; 
+    font-size: 1rem;
+    font-weight: 500;
+    padding:5px 8px;
+    border-radius: 5px;
+    display: inline-block;
+    color: white;
+    margin: 5px 0;
+   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+.message_content h5{
+    background-color: #28c4eb;
+    font-size: 1rem;
+    font-weight: 500;
+    text-align: left;
+    align-self: flex-start; 
+    padding:5px 8px;
+    border-radius: 5px;
+    display: inline-block;
+    margin: 5px 0;
+   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;}
 .chatbot{
     width: 25%;
     height: 90%;
@@ -391,8 +425,6 @@
 }
 
 
-
-
 @media only screen and (max-width: 480px) {
     .sequare{
         position: absolute;
@@ -472,3 +504,4 @@
     /* Styles for large mobile devices */
   }
   
+

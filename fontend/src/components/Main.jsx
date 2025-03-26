@@ -1,12 +1,16 @@
 import "../css/Main.css";
-import { useState } from "react";
-
+import axios from "axios";
+import * as XLSX from "xlsx";
+import { createElement, useEffect, useState } from "react";
 const Main = () => {
   
   const [meg, setMeg] = useState("");
   const [isListening, setIsListening] = useState(false);
   const[brachcode ,setBranchcode]=useState("");
   const[crowd ,setCrowd]=useState("");
+  const [data,setData]=useState([]);
+  const [keyvalue,setKeyvalue]=useState("");
+  const [crowdcount,setCrowdcount]=useState("")
   
   const Speech = window.SpeechRecognition || window.webkitSpeechRecognition;
   const recognition = new Speech();
@@ -102,6 +106,55 @@ const Main = () => {
         
       }
   }
+  
+  const sendMegs = () => {
+    const meg_area = document.getElementById("message_content");
+    document.getElementById("send_text").value="";
+    if (!meg.trim()) return; 
+
+    var userMessage = document.createElement('h5');
+    userMessage.innerHTML = meg;
+    meg_area.appendChild(userMessage);
+
+    meg_area.scrollTop = meg_area.scrollHeight;
+
+   handleSearch(meg);
+};
+
+
+
+useEffect(()=>{
+  fetch("/List.xlsx").then((response)=>response.arrayBuffer())
+  .then((arrayBuffer)=>{
+  const workbook = XLSX.read(arrayBuffer, { type: "array" });
+          const sheetName = workbook.SheetNames[0];
+          const sheet = workbook.Sheets[sheetName];
+          const parsedData = XLSX.utils.sheet_to_json(sheet);
+          
+          console.log(parsedData); // Debugging: Check actual column names
+          setData(parsedData);
+        })
+        .catch((error) => console.error("Error loading Excel file:", error));
+    }, []);
+ const handleSearch =  (meg) => {
+  console.log("hello");
+     var num= meg.toUpperCase();
+      if (data.length === 0) {
+        console.log("Data not loaded");
+        return;
+      }
+      const result = data.find((row) => row["Roll No"] == num);
+      setCrowdcount(result ? result["Student Name"] : "Not Found");
+
+      
+    const meg_area = document.getElementById("message_content");
+    var userMessage = document.createElement('h4');
+    userMessage.innerHTML =(result ? result["Student Name"] : "Not Found" ).toLowerCase();
+    console.log();
+    
+    meg_area.appendChild(userMessage);
+    };
+  
 
   return (
     <div className="main_body">
@@ -144,14 +197,19 @@ const Main = () => {
           <i className="fa-solid fa-xmark" id="closebot" onClick={handlechat}></i>
         </div>
         <div className="chat">
-            <div className="message_content"></div>
+            <div className="message_content" id="message_content">
+               <h4 className="meg_start_one">
+                hello <br /> how can I help you ?
+               </h4>
+                  
+            </div>
             <div className="send_area">
               <span className="working" id="mic_test" >
               <i className="fa-solid fa-microphone" onClick={handleMicClick}></i>
               </span>
            
-             <input type="text" id="send_text" className="send_text" value={meg} onChange={(e)=>{setMeg(e.target.value)}} placeholder="Enter your Queries.." />
-             <button className="meg_button">Send</button>
+             <input type="text" id="send_text" className="send_text"  onChange={(e)=>{setMeg(e.target.value)}} placeholder="Enter your Queries.." />
+             <button  className="meg_button" onClick={sendMegs}>Send</button>
           </div>
         </div>
       </div>

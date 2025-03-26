@@ -80,7 +80,6 @@
   .left_admin_side{
     width: 50%;
     height: 95%;
-    background-color: antiquewhite;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -157,6 +156,12 @@
     top: 50px;
     left: 35%;
     z-index: 1;
+    /* animation: 1s dropup linear forwards; */
+  }
+  .show_admin_details{
+    animation: 1s dropdown linear forwards;
+  }
+  .hide_admin_details{
     animation: 1s dropup linear forwards;
   }
   .close_mark_admin_details {

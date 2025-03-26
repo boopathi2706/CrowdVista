@@ -23,6 +23,12 @@ const AdminDash = () => {
       }
     };
 
+    const hideDropdown=()=>{
+       const popup=document.getElementById("admin_details_area");
+       popup.classList.remove("show_admin_details");
+       popup.classList.add("hide_admin_details")
+    }
+
   return (
     <div className="admin_main_body">
       <div className="sequare"></div>
@@ -48,10 +54,12 @@ const AdminDash = () => {
           </div>
       </div>
 
-      <div className="admin_details_area">
+      <div className="admin_details_area show_admin_details" id='admin_details_area'>
          <div className="close_mark_admin_details">
-                <i className="fa-solid fa-xmark"></i>
+                <i className="fa-solid fa-xmark" onClick={hideDropdown}></i>
          </div>
+         
+
       </div>
 
 
