@@ -1,6 +1,17 @@
 import React from "react";
 import "../css/AdminDash.css";
 import { useState, useRef } from "react";
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import { motion } from 'framer-motion';
+
+const data = [
+  { name: 'Jan', value: 30 },
+  { name: 'Feb', value: 60 },
+  { name: 'Mar', value: 45 },
+  { name: 'Apr', value: 80 },
+  { name: 'May', value: 65 },
+  { name: 'Jun', value: 95 },
+];
 
 const AdminDash = () => {
   const videoRef = useRef(null);
@@ -50,7 +61,43 @@ const AdminDash = () => {
             </button>
           </div>
         </div>
-        <div className="right_admin_side"></div>
+        <div className="right_admin_side">
+
+        <div className="app-container">
+      <motion.div
+        className="chart-card"
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+      >
+        <div className="chart-header">
+          <h2>📊 Monthly Report 📊</h2>
+          <p>Line chart showing monthly values</p>
+        </div>
+
+        <div className="chart-wrapper">
+          <ResponsiveContainer width="100%" height="100%">
+            <LineChart data={data}>
+              <CartesianGrid strokeDasharray="3 3" stroke="#ddd" />
+              <XAxis dataKey="name" stroke="#666" />
+              <YAxis stroke="#666" />
+              <Tooltip />
+              <Line
+                type="monotone"
+                dataKey="value"
+                stroke="#4F46E5"
+                strokeWidth={3}
+                dot={{ r: 5, fill: '#fff', stroke: '#4F46E5', strokeWidth: 2 }}
+                activeDot={{ r: 8 }}
+              />
+            </LineChart>
+          </ResponsiveContainer>
+        </div>
+      </motion.div>
+    </div>
+
+
+        </div>
       </div>
 
       <div
