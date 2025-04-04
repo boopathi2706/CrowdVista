@@ -143,13 +143,13 @@ useEffect(()=>{
         console.log("Data not loaded");
         return;
       }
-      const result = data.find((row) => row["Roll No"] == num);
-      setCrowdcount(result ? result["Student Name"] : "Not Found");
+      const result = data.find((row) => row["Student Name"] == num);
+      setCrowdcount(result ? result["Roll No"] : "Not Found");
 
       
     const meg_area = document.getElementById("message_content");
     var userMessage = document.createElement('h4');
-    userMessage.innerHTML =(result ? result["Student Name"] : "Not Found" ).toLowerCase();
+    userMessage.innerHTML =(result ? result["Roll No"] : "Not Found" ).toUpperCase();
     console.log();
     
     meg_area.appendChild(userMessage);
