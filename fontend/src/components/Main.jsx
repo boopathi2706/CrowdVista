@@ -89,7 +89,7 @@ const Main = () => {
   const handleCheckCrowd=(event)=>{
     setCrowd("");
     event.preventDefault();
-      if(brachcode==="SBI0007"){
+      if(brachcode==="kinathukadavu"){
              setTimeout(()=>{
               setCrowd("360 people");
               loadind.style.opacity=0;
@@ -169,9 +169,9 @@ useEffect(()=>{
         </div>
         <form action="" className="main_form" onSubmit={handleCheckCrowd}> 
           <h1>Happy to See You !</h1>
-          <h3>Enter Branch code and check It</h3>
+          <h3>Enter PDO Office name</h3>
           <div className="inputs_main">
-            <input type="text" placeholder="EX : BXE2000SBI" onChange={(e)=>{setBranchcode(e.target.value)}} />
+            <input type="text" placeholder="EX : kinathukadavu" onChange={(e)=>{setBranchcode(e.target.value)}} />
             <i className="fa-solid fa-building-columns"></i>
           </div>
           <button type="submit">Check</button>

@@ -75,7 +75,7 @@
     align-items: center;
     justify-content: center;
     z-index: 1;
-    padding: 3px;
+    padding: 3px,7;
   }
   .left_admin_side{
     width: 50%;
